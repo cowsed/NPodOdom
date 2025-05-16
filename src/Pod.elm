@@ -65,15 +65,14 @@ calculate_factors cfg =
         wheel_direction =
             Vec2.from_degrees cfg.angle
     in
-    { x = 1.0 / (cfg.wheel_radius * Vec2.dot Vec2.ex wheel_direction) -- E / x 
-    , y = 1.0 / (cfg.wheel_radius * Vec2.dot Vec2.ey wheel_direction) -- E / y 
+    { x = (cfg.wheel_radius * Vec2.dot Vec2.ex wheel_direction) -- E / x 
+    , y = (cfg.wheel_radius * Vec2.dot Vec2.ey wheel_direction) -- E / y 
     , rot =
         let
             t =
                 Vec2.norm (Vec2.rotate_ccw_90 cfg.position)
         in
-        --  E / rot 
-        1.0 / (cfg.wheel_radius * Vec2.dot t wheel_direction / Vec2.length cfg.position)
+        (cfg.wheel_radius * Vec2.dot t wheel_direction / Vec2.length cfg.position)
     }
 
 

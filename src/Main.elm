@@ -56,7 +56,7 @@ draw_origin : List (Svg msg)
 draw_origin =
     let
         zero =
-            inchesToPx 0
+            inc hesToPx 0
 
         rad =
             inchesToPx 1
@@ -358,7 +358,6 @@ view mod =
                         , Html.text (Debug.toString matrixed)
                         , Html.br [] []
                         , Html.br [] []
-                        , Math.render <| Math.Sqrt (Math.Symbol "A")
                         ]
 
                 Nothing ->
@@ -380,8 +379,8 @@ view mod =
     
     in
     Html.div []
-        [ Math.render (Math.Sqrt (Math.Symbol "A")) --left_pane
-        -- , right_pane
+        [ left_pane
+        , right_pane
         ]
 
 
